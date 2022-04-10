@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV</title>
+
+    <style>
+        table{
+            border: 1px solid black;
+            margin: 1rem 0;
+        }
+        td,th{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <% if(locals.options && locals.options===true){ %>
+        <button><a href="/bmsort">Sort?</a></button>
+    <% } %>
+
+    <table>
+        <thead>
+            <tr>
+                <th>S NO</th>
+                <th>Type</th>
+                <th>Title</th>
+                <th>isbn</th>
+                <th>Description</th>
+                <th>Authors</th>
+                <th>PublishedAt</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% data.forEach((ele,ind)=>{ %>
+                <tr>
+                    <td><%= ind+1 %></td>
+                    <td><%= ele.description?'Book':'Magazine' %></td>
+                    <td><a><%= ele.title %></a></td>
+                    <td><a href="/bmi/<%= ele.isbn %>"><%= ele.isbn %></a></td>
+                    <td><%= ele.description || 'NA' %></td>
+                    <td><%= ele.authors %></td>
+                    <td><%= ele.publishedAt || 'NA' %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+
+    <% if(locals.options && locals.options===true){ %>
+        <button><a href="/bmsort">Sort?</a></button>
+    <% } %>
+</body>
+</html>

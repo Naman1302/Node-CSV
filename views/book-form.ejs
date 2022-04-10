@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV</title>
+</head>
+
+<style>
+    *{
+        margin: 0;
+    }
+
+    body{
+        margin-top: 2rem;;
+    }
+
+    form{
+        width: 50%;
+        margin: 1rem auto;
+        border: 1px solid black;
+        box-shadow: 1px 1px 1px black;
+        padding: 1rem;
+        text-align: center;
+    }
+
+    input{
+        display: block;
+        height: 2rem;
+        width: 100%;
+        margin: .25rem 0;
+    }
+
+    button[type="submit"]{
+        height: 2rem;
+        width: 100%;
+        margin: .25rem 0;
+    }
+
+    textarea{
+        display: block;
+        height: 2rem;
+        width: 100%;
+        margin: .25rem 0;
+        resize: vertical;
+    }
+
+    .hide{
+        display: none !important;
+    }
+
+</style>
+<body>
+
+    <span>Switch to: </span>
+    <button id="switch">MAGAZINES</button>
+    <form action="/book" method="post" id="bookPost">
+        <h3>New Book Data</h3>
+        <input type="text" placeholder="title" name="title"/>
+        <textarea placeholder="description" name="description"></textarea>
+        <input type="text" placeholder="isbn" name="isbn"/>
+        <input type="text" placeholder="authors (comma separated if more than one)" name="authors"/>
+        <button type="submit">Add and export CSV</button>
+    </form>
+    
+    <form action="/magazine" method="post" id="magPost" class="hide">
+        <h3>New Magazine Data</h3>
+        <input type="text" placeholder="title" name="title"/>
+        <input type="text" placeholder="publishedAt" name="publishedAt"/>
+        <input type="text" placeholder="isbn" name="isbn"/>
+        <input type="text" placeholder="authors (comma separated if more than one)" name="authors"/>
+        <button type="submit">Add and export CSV</button>
+    </form>
+
+
+    <script>
+        let tg = false
+        const sw = document.getElementById("switch");
+        const bp = document.getElementById("bookPost");
+        const mp = document.getElementById("magPost");
+
+        sw.addEventListener("click",(e)=>{
+            e.stopPropagation();
+            e.preventDefault();
+            
+            if(!tg){
+                e.target.innerHTML = "BOOKS"
+                tg = true
+            }
+            else{
+                e.target.innerHTML = "MAGAZINES"
+                tg = false
+            }
+
+            bp.classList.toggle("hide");
+            mp.classList.toggle("hide");
+        })
+    </script>
+    
+</body>
+</html>

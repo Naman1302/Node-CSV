@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV</title>
+
+    <style>
+        table {
+            border: 1px solid black;
+        }
+        td,th{
+            border: 1px solid black;
+            max-width: 30vw;
+        }
+    </style>
+</head>
+<body>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Title</th>
+                <th>isbn</th>
+                <th>Description</th>
+                <th>Authors</th>
+                <th>PublishedAt</th>
+            </tr>
+        </thead>
+
+        <tbody>
+                <tr>
+                    <td><%= data.description?'Book':'Magazine' %></td>
+                    <td><%= data.title %></td>
+                    <td><%= data.isbn %></td>
+                    <td><%= data.description || 'NA' %></td>
+                    <td><%= data.authors %></td>
+                    <td><%= data.publishedAt || 'NA' %></td>
+                </tr>
+        </tbody>
+
+    </table>
+</body>
+</html>
