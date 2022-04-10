@@ -1,11 +1,13 @@
+require ('dotenv').config();
 const express = require('express')
 const app = express()
-const PORT = process.env.PORT || 8000
+const PORT = process.env.PORT || 3000
 const mongoose = require('mongoose')
 const seed = require('./seed')
 const {post_book, post_magazine, bm, bmsort, bm_isbn, bma} = require('./controllers/controllers')
 
-mongoose.connect('mongodb://localhost:27017/CSV').then(() => {
+
+mongoose.connect(process.env.MONGODB_URL).then(() => {
     console.log('database connected');
     // remove seed when done loading once
     seed();
