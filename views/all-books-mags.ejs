@@ -15,12 +15,50 @@
             border: 1px solid black;
         }
     </style>
+
 </head>
 <body>
-    <% if(locals.options && locals.options===true){ %>
-        <button><a href="/bmsort">Sort?</a></button>
-    <% } %>
+    <div>
+        <form action="">
+            <h3>Search By Author</h3>
+            <input type="text" id="ath" placeholder="Enter email to Search"/>
+            <button id="bya">Search</button>
+        </form>
+        
+        <form action="" >
+            <h3>Search By ISBN</h3>
+            <input type="text" id="isbn" placeholder="Enter ISBN to Search" />
+            <button id="byi">Search</button>
+        </form>
+    </div>
+    
+    <script>
+        const ath = document.querySelector('#ath')
+        const isbn = document.querySelector('#isbn')
+        const bya = document.querySelector('#bya')
+        const byi = document.querySelector('#byi')
 
+        byi.addEventListener('click', e => {
+            e.preventDefault();
+            window.location.pathname = '/bmi/' + isbn.value
+        })
+
+        bya.addEventListener('click', e => {
+            e.preventDefault();
+            window.location.pathname = '/bma/' + ath.value
+        })
+    </script>
+
+    <div style="margin-top: 10px;">
+        <button><a href="/">Go home</a></button>
+    </div>
+    
+    <div style="margin-top:20px ; margin-bottom: 10px;">
+        <% if(locals.options && locals.options===true){ %>
+            <button><a href="/bmsort">Sort?</a></button>
+        <% } %>
+    </div>
+    
     <table>
         <thead>
             <tr>
